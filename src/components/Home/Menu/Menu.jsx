@@ -1,0 +1,150 @@
+import React from "react";
+import {
+  FaBars,
+  FaSearch,
+  FaRegUser,
+  FaRegHeart,
+  FaUserCircle,
+  FaUserCog,
+} from "react-icons/fa";
+import { BsHandbag } from "react-icons/bs";
+import { MdLogout } from "react-icons/md";
+import { closeNvabar, openUsers } from "../jsUserProfile/userProlie";
+import { openCarts } from "../../cart/cartjs";
+import Navbar from "../nvabar/Nvabar";
+import { AiOutlineSearch } from "react-icons/ai";
+
+const Logo = () => {
+  return (
+    <div className="p-0 md:p-3  flex items-center w-[20%] ">
+      <span>
+        <FaBars
+          size="1.8rem"
+          className="cursor-pointer mr-[10px] md:mr-[20px]"
+          onClick={closeNvabar}
+        />
+      </span>
+
+      <img
+        src="https://jthemes.net/themes/html/organic/assets/images/logo/logo.png"
+        className="cursor-pointer"
+      />
+    </div>
+  );
+};
+
+const Search = () => {
+  return (
+    <div className=" w-[53%] flex relative  opacity-0 invisible md:max-lg:opacity-0 md:max-lg:invisible md:opacity-100 md:visible">
+      <form className=" w-[100%] ml-8 flex justify-end items-center relative ">
+        <input
+          className="outline-none p-3.5 text-sm font-medium rounded-md w-[68%] bg-slate-100 mr-16
+                border  border-slate-200"
+          placeholder="All | What are you shopping for?"
+        />
+        <FaSearch
+          className="cursor-pointer absolute top-8 right-20"
+          size="1rem"
+        />
+      </form>
+    </div>
+  );
+};
+
+const MenuNav = () => {
+  return (
+    <ul className=" flex">
+      <li
+        className="icon-login mr-4 bg-green-500 text-white opacity-100 
+      visible md:max-lg:opacity-100 md:max-lg:visible md:opacity-0 md:invisible"
+      >
+        <AiOutlineSearch size="1rem" />
+      </li>
+      <li className="icon-login mr-4 bg-gray-200 relative " onClick={openUsers}>
+        <FaRegUser size="1rem" />
+      </li>
+      <li className="icon-login mr-4 bg-gray-200">
+        <FaRegHeart />
+      </li>
+      <li
+        className="icon-login mr-2 relative bg-green-600 text-white after:absolute "
+        onClick={openCarts}
+      >
+        <BsHandbag />
+        <span
+          className="absolute  flex items-center justify-center md:top-[-30%] nd:right-[23%]
+        w-[30px] h-[30px] rounded-[50%] bg-black z-10 top-[-44%] right-[-32%] text-white text-[14px]"
+        >
+          2
+        </span>
+      </li>
+    </ul>
+  );
+};
+
+const UserProfile = () => {
+  return (
+    <div
+      className="bg-white w-[13%] h-[0%] absolute top-[17%] right-[12%] 
+            shadow-inner drop-shadow-2xl shadow-slate-200 
+            transition-height duration-500  opacity-1 overflow-hidden z-20"
+      id="userProfile"
+    >
+      {/* name */}
+      <div className="flex items-center p-5 border-b border-slate-100">
+        <div className="overflow-hidden bg-white w-[60px] rounded-[100%] mr-2">
+          <img
+            src="https://jthemes.net/themes/html/organic/assets/images/meta/meta1.png"
+            className="border-none h-auto max-w-[100%]"
+          />
+        </div>
+        <div>
+          <h4 className="text-sm font-bold">Jone Doe</h4>
+          <span className="text-sm">Seller</span>
+        </div>
+      </div>
+      {/* setting */}
+      <ul className="p-4">
+        <a href="#">
+          <li className="flex items-center pb-2">
+            <FaUserCircle size="1rem" className="mr-1 text-gray-500" />
+            <span className="text-gray-500 font-medium text-base">Profile</span>
+          </li>
+        </a>
+        <a href="#">
+          <li className="flex items-center pb-2">
+            <FaUserCog size="1rem" className="mr-1 text-gray-500" />
+            <span className="text-gray-500 font-medium text-base">Setting</span>
+          </li>
+        </a>
+        <a href="#">
+          <li className="flex items-center">
+            <MdLogout size="1rem" className="mr-1 text-gray-500" />
+            <span className="text-gray-500 font-medium text-base">Logout</span>
+          </li>
+        </a>
+      </ul>
+    </div>
+  );
+};
+
+const Menu = () => {
+  return (
+    <>
+      {/* logo */}
+      <Logo />
+      {/* nvabar */}
+      <Navbar />
+      {/* search */}
+      <Search />
+      {/* login */}
+      <div className=" w-[27%] flex items-center justify-end">
+        <MenuNav />
+        {/* user-profile */}
+        <UserProfile />
+      </div>
+    </>
+  );
+};
+
+export default Menu;
