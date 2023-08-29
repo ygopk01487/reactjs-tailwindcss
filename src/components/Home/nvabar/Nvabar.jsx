@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className="bg-white-500  top-0 w-[400px] left-[-400px] h-[100%] shadow-lg 
+        className="bg-white  top-0 w-[400px] left-[-400px] h-[100%] shadow-lg 
       shadow-slate-300 border-r-2 border-slate-200 z-20 fixed duration-500"
         id="Nvabar"
       >

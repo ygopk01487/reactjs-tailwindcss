@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaBars,
   FaSearch,
@@ -9,10 +9,15 @@ import {
 } from "react-icons/fa";
 import { BsHandbag } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
-import { closeNvabar, openUsers } from "../jsUserProfile/userProlie";
+import {
+  closeNvabar,
+  openSearchMobile,
+  openUsers,
+} from "../jsUserProfile/userProlie";
 import { openCarts } from "../../cart/cartjs";
 import Navbar from "../nvabar/Nvabar";
 import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Logo = () => {
   return (
@@ -52,13 +57,23 @@ const Search = () => {
 };
 
 const MenuNav = () => {
+  const [openIcons, setOpenIcon] = useState(false);
+  const changOpenIcon = () => {
+    setOpenIcon((e) => !e);
+    openSearchMobile();
+  };
   return (
     <ul className=" flex">
       <li
         className="icon-login mr-4 bg-green-500 text-white opacity-100 
       visible md:max-lg:opacity-100 md:max-lg:visible md:opacity-0 md:invisible"
+        onClick={changOpenIcon}
       >
-        <AiOutlineSearch size="1rem" />
+        {openIcons ? (
+          <AiOutlineClose size="0.9rem" className="text-white" />
+        ) : (
+          <AiOutlineSearch size="1rem" />
+        )}
       </li>
       <li className="icon-login mr-4 bg-gray-200 relative " onClick={openUsers}>
         <FaRegUser size="1rem" />
@@ -85,9 +100,11 @@ const MenuNav = () => {
 const UserProfile = () => {
   return (
     <div
-      className="bg-white w-[13%] h-[0%] absolute top-[17%] right-[12%] 
+      className="bg-white w-[210px] md:w-[13%] h-[0px] absolute top-[9.8%] md:top-[20%] right-[10%] 
             shadow-inner drop-shadow-2xl shadow-slate-200 
-            transition-height duration-500  opacity-1 overflow-hidden z-20"
+            transition-height duration-200 overflow-hidden z-50
+            md:max-lg:w-[20%] md:max-lg:top-[13.8%] md:max-lg:right-[14%]
+            "
       id="userProfile"
     >
       {/* name */}
@@ -95,7 +112,7 @@ const UserProfile = () => {
         <div className="overflow-hidden bg-white w-[60px] rounded-[100%] mr-2">
           <img
             src="https://jthemes.net/themes/html/organic/assets/images/meta/meta1.png"
-            className="border-none h-auto max-w-[100%]"
+            className="border-none h-auto w-[100%] "
           />
         </div>
         <div>
@@ -128,6 +145,33 @@ const UserProfile = () => {
   );
 };
 
+const SearchMobile = () => {
+  return (
+    <div
+      className="bg-white w-[100%] shadow border-t-[1px] border-green-400 
+   left-[0%] right-0 flex justify-items-center justify-center duration-200 
+    h-[0px] top-[9.8%] opacity-100
+    overflow-hidden md:max-lg:top-[13.8%] absolute z-40 invisible
+  "
+      id="searchMobile"
+    >
+      <form className="flex w-[100%] justify-items-center justify-center p-5 relative">
+        <input
+          placeholder="Search your Product..."
+          className="w-[100%] h-[50px] outline-none p-4 text-[13px] rounded-[50px] 
+          font-bold border-green-400 border-[1px]"
+        />
+        <span>
+          <AiOutlineSearch
+            size="1.4rem"
+            className="right-[10%] top-[33px] absolute font-bold text-green-600 md:max-lg:right-[6%]"
+          />
+        </span>
+      </form>
+    </div>
+  );
+};
+
 const Menu = () => {
   return (
     <>
@@ -138,10 +182,11 @@ const Menu = () => {
       {/* search */}
       <Search />
       {/* login */}
-      <div className=" w-[27%] flex items-center justify-end">
+      <div className=" w-[27%]  flex items-center justify-end">
         <MenuNav />
         {/* user-profile */}
         <UserProfile />
+        <SearchMobile />
       </div>
     </>
   );

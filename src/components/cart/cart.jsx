@@ -85,15 +85,18 @@ const ButtonCart = () => {
 
 const Cart = () => {
   return (
-    <div className="modal duration-500">
+    <div className="modal duration-500 visible">
       {/* modal cart */}
       <div
-        className="bg-white fixed w-[370px] h-[100%]
+        className="bg-white fixed w-[370px] h-[100%] 
     duration-500  top-0 right-[-370px] z-9999 shadow-lg shadow-slate-500 p-4
     overflow-y-auto bottom-0"
         id="carts"
       >
-        <div className="flex items-center h-[38px] top-0 justify-between" id='title-cart'>
+        <div
+          className="flex fixed h-[60px] p-4 w-[330px]  bg-white z-10 items-center  top-0 justify-between"
+          id="title-cart"
+        >
           <h2 className="text-[18px] font-bold ">Organic Products</h2>
           <GrClose
             size="1.2rem"
@@ -102,7 +105,7 @@ const Cart = () => {
           />
         </div>
         {/* cart item */}
-        <div className=" flex flex-col items-center ">
+        <div className=" flex flex-col items-center mt-[28px] ">
           {/* item */}
           {cartItems.map((items, index) => {
             return <ItemCart items={items} key={index} />;

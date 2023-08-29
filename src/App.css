@@ -8,11 +8,14 @@
   body {
     @apply font-roboto text-black;
   }
+  body.true {
+    @apply overflow-hidden pr-[17px];
+  }
 }
 
 @layer components {
   .text-li {
-    @apply text-gray-500 font-medium text-base pl-6;
+    @apply text-gray-500 font-medium text-base pl-6 md:max-lg:pl-[5.8px];
   }
   .icon-login {
     @apply cursor-pointer p-[12px] md:p-4 rounded-3xl;
@@ -21,7 +24,14 @@
     @apply after:p-3  after:rounded-xl after:bg-black after:bottom-3/4 after:left-2/3;
   }
   #userProfile.open {
-    @apply opacity-100 h-[32%] duration-500 transition-height;
+    @apply opacity-100 h-[220px] visible;
+  }
+  #menu-scroll.active #userProfile.open {
+    @apply top-[99.7%];
+  }
+
+  #menu-scroll.active #userProfile {
+    @apply top-[99.7%];
   }
   .nvabar-li {
     @apply text-lg p-3 bg-green-100 rounded-md hover:bg-green-300 duration-500;
@@ -33,10 +43,21 @@
 
   /* menu home scroll */
   #menu-scroll.active {
-    @apply fixed w-[100%] bg-white z-10 top-0 pt-[1px] pb-[1px] duration-200 shadow;
+    @apply fixed w-[100%] z-9999 bg-white top-0 pr-[10px] pl-[10px]  pt-[15px] pb-[10px] duration-200 shadow;
   }
   #menu-scroll.actives {
-    @apply fixed w-[100%] bg-white z-10 top-[-30%]  pt-[1px] pb-[1px]  shadow;
+    @apply fixed w-[100%] bg-white z-9999 top-[-30%] pr-[10px] pl-[10px] pt-[15px] pb-[10px]  shadow;
+  }
+
+  /* search mobile */
+  #searchMobile.open {
+    @apply opacity-100 visible h-[100px];
+  }
+  #menu-scroll.active #searchMobile.open {
+    @apply top-[99.7%];
+  }
+  #menu-scroll.active #searchMobile {
+    @apply top-[99.7%];
   }
 
   /* carts */
@@ -47,7 +68,7 @@
     @apply fixed left-0 top-0 w-[100%] h-[100%] overflow-auto z-9999 bg-black bg-blackRgba;
   }
   #title-cart.fix {
-    @apply fixed h-[69.1px] w-[321px] top-0 bg-white z-10;
+    @apply fixed h-[10%] w-[30%] top-0 bg-white z-10;
   }
 
   /* section */

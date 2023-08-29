@@ -75,7 +75,7 @@ const Sections = () => {
           </div>
           <div
             className="bg-white absolute p-3  top-[50%] right-0 border rounded border-slate-400 
-            opacity-0 duration-200 invisible"
+            opacity-0 duration-200 invisible z-10"
             id="model-sort"
           >
             <ul className="">{ulSort}</ul>
